@@ -1,0 +1,62 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="{% static 'style-index.css' %}">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<!-- <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet"> -->
+	<script src="https://kit.fontawesome.com/6b20b1c14d.js" crossorigin="anonymous"></script>
+	<link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+	<title>Contacts List</title>
+</head>
+
+<body>
+	<div class="container">
+		<header>
+			<a href="{% url 'add-contact'  %}" class="add-link">
+				<i class="fas fa-thin fa-plus add"></i>
+			</a>
+			<h2>Team Members</h2>
+			<p id="text">You have {{num_mem}} team members.</p>
+		</header>
+
+		<hr>
+
+		<section class="contacts-library">
+			<div class="contacts-list">
+				{% for contact in contacts reversed %}
+
+				<a href="{% url 'edit-contact' contact.id %}" style="text-decoration: none;">
+					<div class="contact-section">
+						<i class='bx bxs-user-rectangle'></i>
+						<div class="contacts-details">
+							<div class="fullname">
+								<p>
+									{{ contact.first_name | title }} {{ contact.last_name|title }}
+									{%if contact.role == 'admin' %} (admin) 
+									{%endif%}
+								</p>
+							</div>
+							<div id="info">
+								<p id="text">{{ contact.phone_number | title }}</p>
+								<p id="email">{{ contact.email | title }}</p>
+							</div>
+						</div>
+					</div>
+				</a>
+				
+				<hr>
+
+				{% empty %}
+				<h3 style="color:#fff;padding:20px;">No contacts found..</h3>
+				{% endfor %}
+			</div>
+		</section>
+	</div>
+</body>
+
+</html>

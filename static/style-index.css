@@ -1,0 +1,55 @@
+header {
+    position: relative;
+}
+.add-link {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px;
+}
+
+.container{
+    max-width: 428px;
+    margin: 0 auto;;
+    min-height: 100vh;
+}
+
+.contact-section{
+    display: flex;
+    /* justify-content: space-between; */
+}
+
+.contact-section:hover{
+    color:grey;
+}
+
+.contact-section i.bxs-user-rectangle {
+    padding-top: 17px;
+    font-size: 80px; /* Adjust the size according to your preference */
+}
+
+.contacts-details {
+    /* Add padding to the left of the contacts-details */
+    padding-left: 10px; /* Adjust the padding according to your preference */
+}
+
+.contacts-list a {
+    color: inherit; /* or specify the color you want for visited links */
+}
+
+.contacts-list a:visited {
+    color: inherit; /* or specify the color you want for visited links */
+}
+
+#text{
+    color:grey;
+}
+
+#email{
+    color:grey;
+    text-transform: lowercase;
+}
+
+.fa-thin{
+    color: blue;
+}
