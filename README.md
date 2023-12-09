@@ -21,3 +21,8 @@ python manage.py runserver 8080
 <br>
 
 I took approximately 12 hours to complete this project.
+
+<hr>
+
+### UPDATE:
+- Modified the project and built with generic views in Django and forms.
