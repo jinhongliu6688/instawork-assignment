@@ -1,7 +1,7 @@
 .container{
-    max-width: 428px;
-    margin: 0 auto;;
-    min-height: 100vh;
+	max-width: 428px;
+	margin: 0 auto;;
+	min-height: 100vh;
 }
 
 input[type=text], select {
@@ -14,20 +14,13 @@ input[type=text], select {
 	box-sizing: border-box;
 }
 
-label {
-	display: block;
-	text-align: left;
-	color: grey;
-	flex: 1;
-}
-
 input[type="radio"] {
 	display: inline-block;
 	float: right;
 }
 
 .save-button {
-	background-color: rgb(72, 72, 212); /* Green */
+	background-color: rgb(72, 72, 212);
 	border: none;
 	color: white;
 	padding: 16px 32px;
@@ -66,36 +59,13 @@ input[type="radio"] {
 .button-container {
 	display: flex;
 	justify-content: space-between;
-	margin-top: 20px; /* Adjust the margin as needed */
+	margin-top: 20px;
 }
 
-.delete-button {
-	margin-right: 10px; /* Adjust the margin as needed */
-}
-
-/* Add the following style if you want the buttons to be centered vertically */
-.button-wrapper button {
-	align-self: center;
-}
-
-#text{
+.subtitle {
 	color: grey;
 }
 
-.radio-custom:checked ~ label {
-	color: black;
-}
-
-.input-group {
-	display: block;
-}
-
-.text-group-field {
-	padding: 10px;
-}
-
-.inner-block {
-	position: relative;
-	display: flex;
-	flex-direction: row-reverse;
+.error-message{
+	color: red;
 }

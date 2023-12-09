@@ -20,7 +20,7 @@ input[type="radio"] {
 }
 
 .save-button {
-    background-color: rgb(72, 72, 212); /* Green */
+    background-color: rgb(72, 72, 212);
     border: none;
     color: white;
     padding: 16px 32px;
@@ -41,36 +41,16 @@ input[type="radio"] {
 }
 
 .update-contact {
+    /* Adjust Save button location */
     /* Ensure the container uses flexbox for easy alignment */
     display: flex;
     justify-content: flex-end; /* Align items to the end (right) of the container */
 }
 
-#text{
+.subtitle{
     color: grey;
 }
 
-.radio-custom:checked ~ label {
-    color: black;
-}
-
-label {
-    display: block;
-    text-align: left;
-    color: grey;
-    flex: 1;
-}
-
-.input-group {
-    display: block;
-}
-
-.text-group-field {
-    padding: 10px;
-}
-
-.inner-block {
-    position: relative;
-    display: flex;
-    flex-direction: row-reverse;
+.error-message{
+    color: red;
 }

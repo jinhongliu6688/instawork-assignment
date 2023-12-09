@@ -1,43 +1,32 @@
+from django.views.generic.list import ListView
+from django.views.generic.edit import CreateView, UpdateView
 from django.shortcuts import render, redirect
 from .models import Contact
+from .forms import ContactForm
 
 # Create your views here.
-
-def index(request):
-    contacts = Contact.objects.all()
-    num_mem = contacts.count()
+class Index(ListView):
+    model = Contact
+    template_name = "index.html"
+    context_object_name = "contact_list"
     
-    return render(request, 'index.html', {'contacts': contacts, 'num_mem': num_mem})
-
-def addContact(request):
-    if request.method == 'POST':
-
-        new_contact = Contact(
-            first_name=request.POST['firstname'],
-            last_name=request.POST['lastname'],
-            email=request.POST['email'],
-            phone_number=request.POST['phone-number'],
-            role = request.POST['role-choice']
-            )
-        new_contact.save()
-        return redirect('/')
-
-    return render(request, 'new.html')
-
-def editContact(request, pk):
-    contact = Contact.objects.get(id=pk)
-
-    if request.method == 'POST':
-        contact.first_name = request.POST['firstname']
-        contact.last_name = request.POST['lastname']
-        contact.email = request.POST['email']
-        contact.phone_number = request.POST['phone-number']
-        contact.role = request.POST['role-choice']
-        contact.save()
-        
-        return redirect('/')
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["num_mem"] = context['contact_list'].count()
+        return context
     
-    return render(request, 'edit.html', {'contact': contact})
+class Add(CreateView):
+    model = Contact
+    form_class = ContactForm
+    template_name = 'new.html'
+    success_url = "/"
+    
+class Edit(UpdateView):
+    model = Contact
+    form_class = ContactForm
+    template_name = 'edit.html'
+    success_url = "/"
+    
 
 def deleteContact(request, pk):
     contact = Contact.objects.get(id=pk)

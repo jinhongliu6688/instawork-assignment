@@ -17,7 +17,7 @@
 <body>
 	<div class="container">
 		<header>
-			<a href="{% url 'add-contact'  %}" class="add-link">
+			<a href="{%url 'contacts:add-contact' %}" class="add-link">
 				<i class="fas fa-thin fa-plus add"></i>
 			</a>
 			<h2>Team Members</h2>
@@ -28,9 +28,9 @@
 
 		<section class="contacts-library">
 			<div class="contacts-list">
-				{% for contact in contacts reversed %}
+				{% for contact in contact_list %}
 
-				<a href="{% url 'edit-contact' contact.id %}" style="text-decoration: none;">
+				<a href="{% url 'contacts:edit-contact' contact.id %}" style="text-decoration: none;">
 					<div class="contact-section">
 						<i class='bx bxs-user-rectangle'></i>
 						<div class="contacts-details">
@@ -56,6 +56,7 @@
 				{% endfor %}
 			</div>
 		</section>
+
 	</div>
 </body>
 

@@ -7,72 +7,86 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="{% static 'style-new.css' %}">
-
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
-
 	<script src="https://kit.fontawesome.com/6b20b1c14d.js" crossorigin="anonymous"></script>
 	<title>Add Contact</title>
 </head>
 
 <body>
 	<div class='container'>
-		<header class="hero">
-			<div class="hero-info">
-				<h1 class="name">Add a team member</h1>
-				<p id="text">Set email, location, and role.</p>
-				<hr>
-			</div>
+		<header>
+			<h1 class="name">Add a team member</h1>
+			<p class="subtitle">Set email, location, and role.</p>
+			<hr>
 		</header>
 
-		<form action="" method="POST">
+		<form id='new-form' action="{%url 'contacts:add-contact' %}" method="post">
 			{% csrf_token %}
 			<section class="contact-info">
-
 				<h3>Info</h3>
 
-				<div class="info-line">
-					<input type="text" class="type" name="firstname" placeholder="First Name" required>
-				</div>
+				<p>
+					{%for error in form.first_name.errors%}
+					<div class="error-message">
+						<p>{{error}}</p>
+					</div>
+					{%endfor%}
+					{{form.first_name}}
+				</p>
 
-				<div class="info-line">
-					<input type="text" class="type" name="lastname" placeholder="Last Name" required>
-				</div>
+				<p>
+					{%for error in form.last_name.errors%}
+					<div class="error-message">
+						<p>{{error}}</p>
+					</div>
+					{%endfor%}
+					{{form.last_name}}
+				</p>
 
-				<div class="info-line">
-					<input type="text" class="type" name="email" placeholder="Email" required>
-				</div>
+				<p>
+					{%for error in form.email.errors%}
+					<div class="error-message">
+						<p>{{error}}</p>
+					</div>
+					{%endfor%}
+					{{form.email}}
+				</p>
 
-				<div class="info-line">
-					<input type="text" class="type" name="phone-number" placeholder="Phone Number" required>
-				</div>
+				<p>
+					{%for error in form.phone_number.errors%}
+					<div class="error-message">
+						<p>{{error}}</p>
+					</div>
+					{%endfor%}
+					{{form.phone_number}}
+				</p>
 
 				<h3>Role</h3>
 
-				<div class="input-group">
-					<div class="inner-block">
-						<input type="radio" class="radio-custom" id="regular" name="role-choice" value="regular" checked /><br>
-						<label id="regular">Regular - Can't delete members</label>
+				<p>
+					{%for error in form.role.errors%}
+					<div class="error-message">
+						<p>{{error}}</p>
 					</div>
-					<hr>
-					<br>
-					<div class="inner-block">
-						<input type="radio" class="radio-custom" id="admin" name="role-choice" value="admin" /><br>
-						<label id="admin">Admin - Can delete members</label>
-					</div>
-					<hr>
-				</div>
-
+					{%endfor%}
+					{%for role in form.role%}
+					<p>
+						{{role}}
+						<hr>
+					</p>
+					{%endfor%}
+				</p>
 			</section>
-
-			<section class="button-container">
-				<div class="update-contact">
-					<br>
-					<button type=" submit" class="save-button">Save</button>
-				</div>
-			</section>
-
 		</form>
+		
+		<section class="button-container">
+			<div class="update-contact">
+				<br>
+				<input form="new-form" type="submit" class="save-button" value="Save">
+			</div>
+		</section>
+		
 	</div>
 
 </body>

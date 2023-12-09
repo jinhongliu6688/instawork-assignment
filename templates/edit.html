@@ -15,12 +15,10 @@
 
 <body>
 	<div class='container'>
-		<header class="hero">
-			<div class="hero-info">
-				<h1 class="name">Edit team member</h1>
-				<p id="text">Edit contact info, location, and role.</p>
-				<hr>
-			</div>
+		<header>
+			<h1 class="name">Edit team member</h1>
+			<p class="subtitle">Edit contact info, location, and role.</p>
+			<hr>
 		</header>
 
 		<form id='value-form' action="" method="POST">
@@ -29,57 +27,63 @@
 
 				<h3>Info</h3>
 
-				<div class="info-line">
-					<input type="text" class="type" name="firstname" placeholder="First Name"
-						value="{{ contact.first_name | title }}" required>
-				</div>
+				<p>
+					{%for error in form.first_name.errors%}
+					<div class="error-message">
+						<p>{{error}}</p>
+					</div>
+					{%endfor%}
+					{{form.first_name}}
+				</p>
 
-				<div class="info-line">
-					<input type="text" class="type" name="lastname" placeholder="Last Name"
-						value="{{ contact.last_name | title }}" required>
-				</div>
+				<p>
+					{%for error in form.last_name.errors%}
+					<div class="error-message">
+						<p>{{error}}</p>
+					</div>
+					{%endfor%}
+					{{form.last_name}}
+				</p>
 
-				<div class="info-line">
-					<input type="text" class="type" name="phone-number" placeholder="Phone Number"
-						value="{{ contact.phone_number }}" required>
-				</div>
+				<p>
+					{%for error in form.email.errors%}
+					<div class="error-message">
+						<p>{{error}}</p>
+					</div>
+					{%endfor%}
+					{{form.email}}
+				</p>
 
-				<div class="info-line">
-					<input type="text" class="type" name="email" placeholder="Email" value="{{ contact.email }}" required>
-				</div>
+				<p>
+					{%for error in form.phone_number.errors%}
+					<div class="error-message">
+						<p>{{error}}</p>
+					</div>
+					{%endfor%}
+					{{form.phone_number}}
+				</p>
 
 				<h3>Role</h3>
 
-				<div class="input-group">
-					<div class="inner-block">
-						{%if contact.role == 'regular' %}
-						<input type="radio" class="radio-custom" id="regular" name="role-choice" value="regular" checked/><br>
-						{%endif%}
-						{%if contact.role == 'admin' %}
-						<input type="radio" class="radio-custom" id="regular" name="role-choice" value="regular" /><br>
-						{%endif%}
-						<label id="regular">Regular - Can't delete members</label>
+				<p>
+					{%for error in form.role.errors%}
+					<div class="error-message">
+						<p>{{error}}</p>
 					</div>
-					<hr>
-					<br>
-					<div class="inner-block">
-						{%if contact.role == 'regular' %}
-						<input type="radio" class="radio-custom" id="regular" name="role-choice" value="admin" /><br>
-						{%endif%}
-						{%if contact.role == 'admin' %}
-						<input type="radio" class="radio-custom" id="regular" name="role-choice" value="admin" checked/><br>
-						{%endif%}
-						<label id="admin">Admin - Can delete members</label>
-					</div>
-				</div>
-
-				<hr>
+					{%endfor%}
+					{%for role in form.role%}
+					<p>
+						{{role}}
+						<hr>
+					</p>
+					{%endfor%}
+				</p>
 
 			</section>
 			<br>
 		</form>
 		<section class="button-container">
-			<a href="{% url 'delete' contact.id %}">
+			<a href="{% url 'contacts:delete-contact' contact.id %}">
 				<button type="submit" value="Delete" class="delete-button">Delete</button>
 			</a>
 			<button form='value-form' class="save-button">Save</button>

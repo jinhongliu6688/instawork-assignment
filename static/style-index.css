@@ -16,7 +16,6 @@ header {
 
 .contact-section{
     display: flex;
-    /* justify-content: space-between; */
 }
 
 .contact-section:hover{
@@ -25,20 +24,19 @@ header {
 
 .contact-section i.bxs-user-rectangle {
     padding-top: 17px;
-    font-size: 80px; /* Adjust the size according to your preference */
+    font-size: 80px;
 }
 
 .contacts-details {
-    /* Add padding to the left of the contacts-details */
-    padding-left: 10px; /* Adjust the padding according to your preference */
+    padding-left: 10px;
 }
 
 .contacts-list a {
-    color: inherit; /* or specify the color you want for visited links */
+    color: inherit;
 }
 
 .contacts-list a:visited {
-    color: inherit; /* or specify the color you want for visited links */
+    color: inherit;
 }
 
 #text{
